@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
+/*   pallock.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
-/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
+/*   Created: 2025/01/17 09:20:10 by mgaudin           #+#    #+#             */
+/*   Updated: 2025/01/17 09:35:12 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_int.h"
+#include "include/fractol.h"
 
-int	mlx_destroy_display(t_xvar *xvar)
+int main(void)
 {
-	XCloseDisplay(xvar->display);
+    void    *mlx_ptr;
+    void    *mlx_win;
+
+    mlx_ptr = mlx_init();
+    mlx_win = mlx_new_window(mlx_ptr, 500, 500, "fractol");
+    mlx_loop(mlx_ptr);
 }
