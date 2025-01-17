@@ -4,7 +4,7 @@ CCFLAGS = #Wall -Wextra -Werror
 LIBFT = libft.a
 LIBFT_DIR = libft
 
-SRC =	pallock.c
+SRC =	main.c
 
 OBJ = $(SRC:.c=.o)
 
