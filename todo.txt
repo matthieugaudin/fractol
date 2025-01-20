@@ -1,0 +1,32 @@
+/* 
+- Mandelbrot set : OK
+- Julia set
+- zoom in and zoom out
+- beautiful nice-looking color games to feel the depth of fratales : OK
+- display an image in the window : OK
+- window managment should be runny : OK
+- quit the porgram properly with ESC key press
+- same with the cros at the top of the window
+- use the minilibx images : OK
+
+- implement another fractal (burnship, newton, buddhaabrot, etc);
+- make sure the zoom effect follows the mouse position
+- we can also move arround with the key arrows
+- handle color shift
+- leaks
+
+- smooth the color when the point is out of the set
+- increase decrease precision
+- do i have to handle the scale of the window ?
+
+
+
+1 - make mandelbrot working : OK
+2 - make julia working
+3 - implement the mandatory minilibx functions
+4 - implement the bonus minilibx functions
+5 - change the code to be more adaptable with many fractals
+6 - implement all the fractals you want
+7 - smooth the colors
+8 - increase / decrease precision keypress
+*/

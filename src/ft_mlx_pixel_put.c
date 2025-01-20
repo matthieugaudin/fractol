@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 13:00:05 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/20 11:57:24 by mgaudin          ###   ########.fr       */
+/*   Created: 2025/01/19 18:09:01 by mgaudin           #+#    #+#             */
+/*   Updated: 2025/01/20 10:39:57 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/fractol.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	int	i;
+	char	*pxl;
+	int		offset;
 
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		offset = (y * img->line_len) + (x * (img->bpp / 8));
+		pxl = img->pixel + offset;
+		*(unsigned int *)pxl = color;
+	}
 }
