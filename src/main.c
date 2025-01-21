@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:20:10 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/20 11:59:38 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/21 11:52:07 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,27 @@ static void	init_fractal(t_env *fractal)
 	fractal->nb_iterations = 500;
 }
 
+int	key_handler(int keycode, void *param)
+{
+	if (keycode == 65307)
+		printf("ESC");
+	if (keycode == 65361)
+        printf("Left Arrow Pressed\n");
+    else if (keycode == 65362)
+        printf("Up Arrow Pressed\n");
+    else if (keycode == 65363)
+        printf("Right Arrow Pressed\n");
+    else if (keycode == 65364)
+        printf("Down Arrow Pressed\n");
+}
+
+void	event_handler(t_env *fractal)
+{
+	mlx_hook(fractal->win, KeyPress, KeyPressMask, key_handler, fractal);
+	// mlx_hook(fractal->win, ButtonPress, ButtonPressMask, mouse_handler, fractal);
+	// mlx_hook(fractal->win, DestroyNotify, StructureNotifyMask, window_handler, fractal);
+}
+
 int main(int argc, char **argv)
 {
 	t_env	fractal;
@@ -87,6 +108,7 @@ int main(int argc, char **argv)
 	{
 		init_fractal(&fractal);
 		draw_fractal(&fractal);
+		event_handler(&fractal);
 		mlx_loop(fractal.mlx);
 	}
 	else

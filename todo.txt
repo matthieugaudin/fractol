@@ -13,20 +13,26 @@
 - make sure the zoom effect follows the mouse position
 - we can also move arround with the key arrows
 - handle color shift
-- leaks
 
 - smooth the color when the point is out of the set
+- make gradient with every color (name ??)
 - increase decrease precision
-- do i have to handle the scale of the window ?
+- julia set follwing the mouse and be able the stop with the space
+- have a button to smooth the color shift
+- have 10 palets of colors
 
 
-
-1 - make mandelbrot working : OK
-2 - make julia working
-3 - implement the mandatory minilibx functions
-4 - implement the bonus minilibx functions
-5 - change the code to be more adaptable with many fractals
-6 - implement all the fractals you want
-7 - smooth the colors
-8 - increase / decrease precision keypress
+TO do
+- all the event handler work even for bonus
+- make sur there are no leaks
+- handle colorshift with the algo for color palettes
+    -> algo to create any gradient
+    -> make the interactive color shift
+    -> when space is pressed stop the color shift
+- smooth algorithm
+- increase and decrease precision
+- make the julia set
+- julia set follwing the mouse and be able the stop with the space
+- make other fractals
+- have a good parsing
 */
