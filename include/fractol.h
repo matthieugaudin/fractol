@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:15:22 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/21 11:28:10 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:30:13 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ typedef struct s_env
 	void	*win;
 	t_img	img;
 	int		nb_iterations;
+	double	zoom_effect;
 }	t_env;
 
 void	ft_mlx_pixel_put(t_img *img, int x, int y, int color);
 double	scale(double unscaled_num, double new_min, double new_max, double old_max);
 double	modulus(t_complex z);
 void	calc_suit_iteration(t_complex *z, t_complex c);
+void	free_data(t_env *fractal);
 
 #endif /* FRACTOL_H */

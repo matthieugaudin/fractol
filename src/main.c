@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:20:10 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/21 11:52:07 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:40:48 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	draw_pixel(t_env *fractal, int x, int y)
 
 	z.a = 0;
 	z.b = 0;
-	c.a = scale(x, -2, 2, WIDTH - 1);
-	c.b = scale(y, 2, -2, HEIGHT - 1);
+	c.a = scale(x, -2, 2, WIDTH - 1) + fractal->zoom_effect;
+	c.b = scale(y, 2, -2, HEIGHT - 1) + fractal->zoom_effect;
 	i = 0;
 	while (i < fractal->nb_iterations)
 	{
@@ -60,42 +60,50 @@ static void	init_fractal(t_env *fractal)
 {
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
-	{
-		mlx_destroy_display(fractal->mlx);
-		free(fractal->mlx);
-	}
+		free_data(fractal);
     fractal->win = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, "fractol");
 	if (!fractal->win)
-	{
-		mlx_destroy_window(fractal->mlx, fractal->win);
-		mlx_destroy_display(fractal->mlx);
-		free(fractal->mlx);
-	}
+		free_data(fractal);
     fractal->img.img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
+	if (!fractal->img.img)
+		free_data(fractal);
 	fractal->img.pixel = mlx_get_data_addr(fractal->img.img, &fractal->img.bpp,
 										&fractal->img.line_len, &fractal->img.endian);
-	fractal->nb_iterations = 500;
+	fractal->nb_iterations = 42;
+	fractal->zoom_effect = 0;
 }
 
-int	key_handler(int keycode, void *param)
+int	key_handler(int keycode, t_env *param)
 {
 	if (keycode == 65307)
-		printf("ESC");
-	if (keycode == 65361)
-        printf("Left Arrow Pressed\n");
-    else if (keycode == 65362)
-        printf("Up Arrow Pressed\n");
-    else if (keycode == 65363)
-        printf("Right Arrow Pressed\n");
-    else if (keycode == 65364)
-        printf("Down Arrow Pressed\n");
+	{
+		free_data(param);
+		exit(0);
+	}
+	return (0);
+}
+
+int	window_handler(t_env *param)
+{
+	free_data(param);
+	exit(0);
+}
+
+int	mouse_handler(int mousecode, int x, int y, t_env *param)
+{
+    if (mousecode == 4)
+		param->zoom_effect  += 0.5;
+	else if (mousecode == 5)
+		param->zoom_effect  -= 0.5;
+	draw_fractal(param);
+	return (0);
 }
 
 void	event_handler(t_env *fractal)
 {
-	mlx_hook(fractal->win, KeyPress, KeyPressMask, key_handler, fractal);
-	// mlx_hook(fractal->win, ButtonPress, ButtonPressMask, mouse_handler, fractal);
-	// mlx_hook(fractal->win, DestroyNotify, StructureNotifyMask, window_handler, fractal);
+	mlx_key_hook(fractal->win, key_handler, fractal);
+	mlx_mouse_hook(fractal->win, mouse_handler, fractal);
+	mlx_hook(fractal->win, DestroyNotify, StructureNotifyMask, window_handler, fractal);
 }
 
 int main(int argc, char **argv)
@@ -110,6 +118,7 @@ int main(int argc, char **argv)
 		draw_fractal(&fractal);
 		event_handler(&fractal);
 		mlx_loop(fractal.mlx);
+		free_data(&fractal);
 	}
 	else
 		ft_putstr_fd("Error\n", 1);
