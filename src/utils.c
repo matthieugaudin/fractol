@@ -6,16 +6,12 @@
 /*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:07:37 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/22 11:10:10 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/23 09:55:13 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-double	modulus(t_complex z)
-{
-	return (z.a * z.a + z.b * z.b);
-}
 
 double	scale(double unscaled_num, double new_min, double new_max, double old_max)
 {

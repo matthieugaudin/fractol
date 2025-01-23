@@ -1,38 +1,20 @@
-/* 
-- Mandelbrot set : OK
-- Julia set
-- zoom in and zoom out
-- beautiful nice-looking color games to feel the depth of fratales
-- display an image in the window : OK
-- window managment should be runny : OK
-- quit the porgram properly with ESC key press : OK
-- same with the cros at the top of the window : OK
-- use the minilibx images : OK
 
-- implement another fractal (burnship, newton, buddhaabrot, etc);
+
 - make sure the zoom effect follows the mouse position
-- we can also move arround with the key arrows
+- implement the Julia set
+- implement another fractals, (burnship, newton, buddhaabrot, etc);
+- good parsing with a helper as in my phone
+
+- lerping color alorithm
 - handle color shift
-
-- smooth the color when the point is out of the set
-- make gradient with every color (name ??)
-- increase decrease precision
+- make color palettes
+- smooth the color
 - julia set follwing the mouse and be able the stop with the space
-- have a button to smooth the color shift
-- have 10 palets of colors
+- a button to change fractal
+- a button the return to the original position
+- think of every calcul you can optimize (scale)
+- makefile for a blog post
+    -> nikito video
+    -> everything you need in one hour
+    -> make it beautiful
 
-
-TO do
-- all the event handler work even for bonus
-- make sur there are no leaks
-- handle colorshift with the algo for color palettes
-    -> algo to create any gradient
-    -> make the interactive color shift
-    -> when space is pressed stop the color shift
-- smooth algorithm
-- increase and decrease precision
-- make the julia set
-- julia set follwing the mouse and be able the stop with the space
-- make other fractals
-- have a good parsing
-*/
