@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:20:10 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/23 12:48:16 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/23 18:39:47 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
+
+t_rgb	get_rgb(int color)
+{
+	t_rgb	c;
+
+	c.r = (color >> 16) & 0xFF;
+	c.g = (color >> 8) & 0xFF;
+	c.b = color & 0xFF;
+	return (c);
+}
+
+int	rgb_lerping(int color1, int color2, float t)
+{
+	t_rgb	c1;
+	t_rgb	c2;
+	t_rgb	c;
+
+	c1 = get_rgb(color1);
+	c2 = get_rgb(color2);
+	c.r = c1.r + ((c2.r - c1.r) * t);
+	c.g = c1.g + ((c2.g - c1.g) * t);
+	c.b = c1.b + ((c2.b - c1.b) * t);
+	return ((c.r << 16) | (c.g << 8) | c.b);
+}
+
 
 void	draw_pixel(t_env *fractal, int x, int y)
 {
@@ -31,10 +56,11 @@ void	draw_pixel(t_env *fractal, int x, int y)
 			break ;
 		i++;
 	}
+	color = rgb_lerping(0x121214, 0xffffff, (float)i / fractal->nb_iterations);
 	if (i == fractal->nb_iterations)
-		ft_mlx_pixel_put(&fractal->img, x, y, 0xffffff);
+		ft_mlx_pixel_put(&fractal->img, x, y, 0x121214);
 	else
-		ft_mlx_pixel_put(&fractal->img, x, y, 0x000099 * i);
+		ft_mlx_pixel_put(&fractal->img, x, y, color);
 }
 
 void	draw_fractal(t_env *fractal)
@@ -141,7 +167,7 @@ void	show_helper(void)
 
 void	parsing(int argc, char **argv)
 {
-	if (!argv[1])
+	if (argv[1])
 	{
 		show_helper();
 		exit(0);
@@ -162,7 +188,7 @@ int main(int argc, char **argv)
 {
 	t_env	fractal;
 
-	parsing(argc, argv);
+	// parsing(argc, argv);
 	init_fractal(&fractal);
 	draw_fractal(&fractal);
 	event_handler(&fractal);

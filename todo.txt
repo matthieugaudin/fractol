@@ -1,20 +1,27 @@
 
 
-- make sure the zoom effect follows the mouse position
-- implement the Julia set
-- implement another fractals, (burnship, newton, buddhaabrot, etc);
-- good parsing with a helper as in my phone
-
-- lerping color alorithm
+                FRIDAY
+- keypress to activate/desactivate lerping
 - handle color shift
 - make color palettes
-- smooth the color
+- make sure the zoom effect follows the mouse position
+
+                MONDAY
+- implement the Julia set
 - julia set follwing the mouse and be able the stop with the space
+- PART-1 implement another fractals
+
+                TUESDAY
+- PART-2 implement another fractals
 - a button to change fractal
 - a button the return to the original position
-- think of every calcul you can optimize (scale)
-- makefile for a blog post
-    -> nikito video
-    -> everything you need in one hour
-    -> make it beautiful
 
+                WEDNESDAY
+- PART-3 implement another fractals
+- think of every calcul you can optimize (scale)
+- good parsing with a helper as in my phone
+
+                THURSDAY
+- #Correction 1
+- #Correction 2
+- #Correction 3
