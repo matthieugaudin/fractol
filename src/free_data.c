@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:07:37 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/24 12:27:33 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/24 16:32:56 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
+
+static void	free_circular_lst(t_list **head)
+{
+	t_list	*node;
+	t_list	*tmp;
+
+	node = (*head)->next;
+	while (node != *head)
+	{
+		tmp = node;
+		node = node->next;
+		ft_lstdelone(tmp, free);
+	}
+	ft_lstdelone(node, free);
+}
 
 void	free_data(t_env *fractal)
 {
@@ -18,7 +33,7 @@ void	free_data(t_env *fractal)
 	{
 		if (fractal->color)
 		{
-			ft_lstclear(&fractal->color);
+			free_circular_lst(&fractal->color);
 		}
 		if (fractal->img.img)
 		{

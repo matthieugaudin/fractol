@@ -1,5 +1,5 @@
 NAME = fractol
-CC = cc
+CC = cc -g
 CCFLAGS = #Wall -Wextra -Werror
 LIBFT = libft.a
 LIBFT_DIR = libft

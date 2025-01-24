@@ -3,14 +3,8 @@
                 FRIDAY
 - keypress to activate/desactivate lerping : OK
 - make the keypress +/- working on both : OK
-- handle color shift
-    -> make link list working : OK
-    -> make color palettes
-    -> handle the keypress
-    -> put the list circulare
-    -> leaks for the list
-
-- make sure the zoom effect follows the mouse position
+- handle color shift : OK
+- make sure the zoom effect follows the mouse position : 
 
                 MONDAY
 - implement the Julia set

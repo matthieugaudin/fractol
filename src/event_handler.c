@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:43:16 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/24 12:41:34 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/24 15:52:31 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	key_handler(int keycode, t_env *param)
 {
-	printf("%d\n", keycode);
+	// printf("%d\n", keycode);
 	if (keycode == 65307)
 	{
 		free_data(param);
@@ -33,14 +33,9 @@ static int	key_handler(int keycode, t_env *param)
 	else if ((keycode == 65453 || keycode == 45) && param->nb_iterations > 12)
 		param->nb_iterations -= 10;
 	else if (keycode == 108)
-	{
 		param->to_lerp = !param->to_lerp;
-	}
 	else if (keycode == 115)
-	{
-		if (param->color->next)
-			param->color = param->color->next;
-	}
+		param->color = param->color->next;
 	draw_fractal(param);
 	return (0);
 }
