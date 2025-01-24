@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:07:37 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/23 09:55:13 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/24 12:27:33 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-
-double	scale(double unscaled_num, double new_min, double new_max, double old_max)
-{
-	return ((new_max - new_min) * unscaled_num / old_max + new_min);
-}
-
-void	calc_suit_iteration(t_complex *z, t_complex c)
-{
-	double	tmp_z_a;
-
-	tmp_z_a = (z->a * z->a) - (z->b * z->b);
-	z->b = 2 * z->a * z->b;
-	z->a = tmp_z_a;
-	z->a += c.a;
-	z->b += c.b;
-}
-
 void	free_data(t_env *fractal)
 {
 	if (fractal)
 	{
+		if (fractal->color)
+		{
+			ft_lstclear(&fractal->color);
+		}
 		if (fractal->img.img)
 		{
 			mlx_destroy_image(fractal->mlx, fractal->img.img);

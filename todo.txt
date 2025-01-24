@@ -1,9 +1,15 @@
 
 
                 FRIDAY
-- keypress to activate/desactivate lerping
+- keypress to activate/desactivate lerping : OK
+- make the keypress +/- working on both : OK
 - handle color shift
-- make color palettes
+    -> make link list working : OK
+    -> make color palettes
+    -> handle the keypress
+    -> put the list circulare
+    -> leaks for the list
+
 - make sure the zoom effect follows the mouse position
 
                 MONDAY
