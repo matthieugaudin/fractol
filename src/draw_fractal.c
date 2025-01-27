@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:50:57 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/24 12:02:16 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/27 14:39:54 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	rgb_lerping(int color1, int color2, float t)
 }
 
 
-static void	draw_pixel(t_env *fractal, int x, int y)
+static void	draw_mandelbrot_pxl(t_env *fractal, int x, int y)
 {
 	t_complex	z;
 	t_complex	c;
@@ -62,6 +62,34 @@ static void	draw_pixel(t_env *fractal, int x, int y)
 	z.b = 0;
 	c.a = scale(x, -2 + fractal->x_shift, 2 + fractal->x_shift, WIDTH - 1) * fractal->zoom;
 	c.b = scale(y, 2 + fractal->y_shift, -2 + fractal->y_shift, HEIGHT - 1) * fractal->zoom;
+	i = 0;
+	while (i < fractal->nb_iterations)
+	{
+		calc_suit_iteration(&z, c);
+		if ((z.a * z.a + z.b * z.b) > 4)
+			break ;
+		i++;
+	}
+	color = rgb_lerping(((int *)fractal->color->content)[0], ((int *)fractal->color->content)[1], (float)i / fractal->nb_iterations);
+	if (i == fractal->nb_iterations)
+		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[0]);
+	else if (fractal->to_lerp)
+		ft_mlx_pixel_put(&fractal->img, x, y, color);
+	else
+		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[1] * i);
+}
+
+static void	draw_julia_pxl(t_env *fractal, char **argv, int x, int y)
+{
+	t_complex	z;
+	t_complex	c;
+	int			color;
+	int			i;
+
+	c.a = ft_atod(argv[2]);
+	c.b = ft_atod(argv[3]);
+	z.a = scale(x, -2 + fractal->x_shift, 2 + fractal->x_shift, WIDTH - 1) * fractal->zoom;
+	z.b = scale(y, 2 + fractal->y_shift, -2 + fractal->y_shift, HEIGHT - 1) * fractal->zoom;
 	i = 0;
 	while (i < fractal->nb_iterations)
 	{
@@ -90,7 +118,10 @@ void	draw_fractal(t_env *fractal)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			draw_pixel(fractal, x, y);
+			if (fractal->id == 1)
+				draw_mandelbrot_pxl(fractal, x, y);
+			else if (fractal->id == 2)
+				draw_julia_pxl(fractal, fractal->argv, x, y);
 			y++;
 		}
 		x++;

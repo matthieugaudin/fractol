@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:40:48 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/24 09:54:55 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/27 14:55:30 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	show_helper(void)
 	ft_putstr_fd("|----------------- How to use fractol-----------------|\n", 1);
 	ft_putstr_fd("|                                                     |\n", 1);
 	ft_putstr_fd("|    ./fractol mandelbrot                             |\n", 1);
-	ft_putstr_fd("|    ./fractol julia 0,285 0,013 (or other values)    |\n", 1);
+	ft_putstr_fd("|    ./fractol julia -0.8 0.156 (double values)       |\n", 1);
 	ft_putstr_fd("|                                                     |\n", 1);
 	ft_putstr_fd("|-------------- How to use the keyboard --------------|\n", 1);
 	ft_putstr_fd("|                                                     |\n", 1);

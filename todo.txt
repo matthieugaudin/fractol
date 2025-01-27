@@ -1,27 +1,10 @@
 
 
-                FRIDAY
-- keypress to activate/desactivate lerping : OK
-- make the keypress +/- working on both : OK
-- handle color shift : OK
-- make sure the zoom effect follows the mouse position : 
-
-                MONDAY
-- implement the Julia set
-- julia set follwing the mouse and be able the stop with the space
-- PART-1 implement another fractals
-
-                TUESDAY
-- PART-2 implement another fractals
-- a button to change fractal
+- add atod to libft and reclone libft : OK
+- implement the Julia set : OK
+- implement burniship
+- make sure the zoom effect follows the mouse position
 - a button the return to the original position
-
-                WEDNESDAY
-- PART-3 implement another fractals
-- think of every calcul you can optimize (scale)
 - good parsing with a helper as in my phone
-
-                THURSDAY
-- #Correction 1
-- #Correction 2
-- #Correction 3
+- compile with flags
+- add other fractals

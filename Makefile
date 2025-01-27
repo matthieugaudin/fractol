@@ -8,7 +8,7 @@ MLX_DIR = mlx_linux
 
 
 SRC =	src/main.c src/parsing.c src/init_fractal.c src/draw_fractal.c \
-		src/event_handler.c src/free_data.c src/maths_utils.c
+		src/event_handler.c src/free_data.c src/utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -20,7 +20,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
 
 %.o: %.c
-	$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) -I/usr/include -Imlx_linux -c $< -o $@
 
 # -03 -c
 clean:

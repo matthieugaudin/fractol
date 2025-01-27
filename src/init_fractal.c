@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:52:15 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/24 16:52:35 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/27 14:23:50 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,27 @@ static void	create_color_palette(t_env *fractal)
 	add_color(fractal, &fractal->color, 0x111111, 0x888888);
 }
 
-static void	init_fractal_data(t_env *fractal)
+static void	set_fractal_id(t_env *fractal, char **argv)
+{
+	if (!ft_strcmp("mandelbrot", argv[1]))
+		fractal->id = 1;
+	else if (!ft_strcmp("julia", argv[1]))
+		fractal->id = 2;
+}
+
+static void	init_fractal_data(t_env *fractal, char **argv)
 {
 	fractal->zoom = 1;
 	fractal->x_shift = 0;
 	fractal->y_shift = 0;
 	fractal->to_lerp = 1;
 	fractal->nb_iterations = 42;
+	fractal->argv = argv;
 	create_color_palette(fractal);
+	set_fractal_id(fractal, argv);
 }
 
-void	init_fractal(t_env *fractal)
+void	init_fractal(t_env *fractal, char **argv)
 {
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
@@ -73,5 +83,5 @@ void	init_fractal(t_env *fractal)
 		free_data(fractal);
 	fractal->img.pixel = mlx_get_data_addr(fractal->img.img, &fractal->img.bpp,
 										&fractal->img.line_len, &fractal->img.endian);
-	init_fractal_data(fractal);
+	init_fractal_data(fractal, argv);
 }
