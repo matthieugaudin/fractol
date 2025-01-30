@@ -8,7 +8,7 @@ MLX_DIR = mlx_linux
 
 
 SRC =	src/main.c src/parsing.c src/init_fractal.c src/draw_fractal.c \
-		src/event_handler.c src/free_data.c src/utils.c
+		src/event_handler.c src/free_data.c src/utils.c src/lerping.c
 
 OBJ = $(SRC:.c=.o)
 

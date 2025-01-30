@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:42:18 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/27 14:34:07 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/30 19:41:08 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ double	scale(double unscaled_num, double new_min, double new_max, double old_max
 	return ((new_max - new_min) * unscaled_num / old_max + new_min);
 }
 
-void	calc_suit_iteration(t_complex *z, t_complex c)
+void	calc_suit_iteration(t_env *fractal, t_complex *z, t_complex c)
 {
 	double	tmp_z_a;
 
+	if (fractal->id == 3)
+	{
+		z->a = fabs(z->a);
+		z->b = fabs(z->b);
+	}
 	tmp_z_a = (z->a * z->a) - (z->b * z->b);
 	z->b = 2 * z->a * z->b;
 	z->a = tmp_z_a;
