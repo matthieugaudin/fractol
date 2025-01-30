@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:52:15 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/27 14:23:50 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/30 19:58:17 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	set_fractal_id(t_env *fractal, char **argv)
 		fractal->id = 1;
 	else if (!ft_strcmp("julia", argv[1]))
 		fractal->id = 2;
+	else if (!ft_strcmp("burningship", argv[1]))
+		fractal->id = 3;
 }
 
 static void	init_fractal_data(t_env *fractal, char **argv)

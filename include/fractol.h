@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:15:22 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/27 14:23:30 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/30 19:57:13 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	draw_fractal(t_env *fractal);
 void	event_handler(t_env *fractal);
 void	free_data(t_env *fractal);
 double	scale(double unscaled_num, double new_min, double new_max, double old_max);
-void	calc_suit_iteration(t_complex *z, t_complex c);
+void	calc_suit_iteration(t_env *fractal, t_complex *z, t_complex c);
 double	ft_atod(char *str);
+int		rgb_lerping(int color1, int color2, float t);
+t_rgb	get_rgb(int color);
 
 #endif /* FRACTOL_H */
