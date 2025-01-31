@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:43:16 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/27 14:18:41 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:01:08 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	key_handler(int keycode, t_env *param)
 {
-	// printf("%d\n", keycode);
 	if (keycode == 65307)
 	{
 		free_data(param);
@@ -46,13 +45,24 @@ static int	window_handler(t_env *param)
 	exit(0);
 }
 
+
 static int	mouse_handler(int mousecode, int x, int y, t_env *param)
 {
+	double	x_before;
+	double	x_after;
+	double	y_before;
+	double	y_after;
+
+	x_before = scale(x, -2 + param->x_shift, 2 + param->x_shift, WIDTH - 1) * param->zoom;
+	y_before = scale(y, 2 + param->y_shift, -2 + param->y_shift, HEIGHT - 1) * param->zoom;
     if (mousecode == 4)
 		param->zoom  *= 1.05;
 	else if (mousecode == 5)
 		param->zoom  *= 0.95;
-	draw_fractal(param);
+	x_after = scale(x, -2 + param->x_shift, 2 + param->x_shift, WIDTH - 1) * param->zoom;
+	y_after = scale(y, 2 + param->y_shift, -2 + param->y_shift, HEIGHT - 1) * param->zoom;
+	param->x_shift += ((x_before - x_after) / param->zoom);
+	param->y_shift += ((y_before - y_after) / param->zoom);
 	return (0);
 }
 

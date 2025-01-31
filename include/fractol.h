@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:15:22 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/30 19:57:13 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:01:18 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> // TO DEBUG
 # include <stdbool.h>
 # include <X11/X.h>
 # include <limits.h>
