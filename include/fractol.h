@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:15:22 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/31 20:01:18 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 19:04:17 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <X11/X.h>
-# include <limits.h>
 
 typedef struct s_rgb
 {
@@ -66,7 +65,7 @@ void	init_fractal(t_env *fractal, char **argv);
 void	draw_fractal(t_env *fractal);
 void	event_handler(t_env *fractal);
 void	free_data(t_env *fractal);
-double	scale(double unscaled_num, double new_min, double new_max, double old_max);
+double	scale(double num, double new_min, double new_max, double old_max);
 void	calc_suit_iteration(t_env *fractal, t_complex *z, t_complex c);
 double	ft_atod(char *str);
 int		rgb_lerping(int color1, int color2, float t);

@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:52:15 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/30 19:58:17 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:41:45 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	add_color(t_env *fractal, t_list **head, int color1, int color2)
 {
-	t_list 	*color_node;
+	t_list	*color_node;
 	int		*colors;
- 
+
 	colors = malloc(sizeof(int) * 2);
 	if (!colors)
 		free_data(fractal);
@@ -77,13 +77,13 @@ void	init_fractal(t_env *fractal, char **argv)
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
 		free_data(fractal);
-    fractal->win = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, "fractol");
+	fractal->win = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, "fractol");
 	if (!fractal->win)
 		free_data(fractal);
-    fractal->img.img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
+	fractal->img.img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
 	if (!fractal->img.img)
 		free_data(fractal);
 	fractal->img.pixel = mlx_get_data_addr(fractal->img.img, &fractal->img.bpp,
-										&fractal->img.line_len, &fractal->img.endian);
+			&fractal->img.line_len, &fractal->img.endian);
 	init_fractal_data(fractal, argv);
 }

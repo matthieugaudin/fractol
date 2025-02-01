@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:43:16 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 17:56:58 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 19:06:00 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	window_handler(t_env *param)
 	exit(0);
 }
 
-
 static int	mouse_handler(int mousecode, int x, int y, t_env *param)
 {
 	double	x_before;
@@ -53,14 +52,14 @@ static int	mouse_handler(int mousecode, int x, int y, t_env *param)
 	double	y_before;
 	double	y_after;
 
-	x_before = scale(x, -2 + param->x_shift, 2 + param->x_shift, WIDTH - 1) * param->zoom;
-	y_before = scale(y, 2 + param->y_shift, -2 + param->y_shift, HEIGHT - 1) * param->zoom;
-    if (mousecode == 4)
-		param->zoom  *= 1.05;
+	x_before = (scale(x, -2, 2, WIDTH - 1) + param->x_shift) * param->zoom;
+	y_before = (scale(x, 2, -2, WIDTH - 1) + param->y_shift) * param->zoom;
+	if (mousecode == 4)
+		param->zoom *= 1.05;
 	else if (mousecode == 5)
-		param->zoom  *= 0.95;
-	x_after = scale(x, -2 + param->x_shift, 2 + param->x_shift, WIDTH - 1) * param->zoom;
-	y_after = scale(y, 2 + param->y_shift, -2 + param->y_shift, HEIGHT - 1) * param->zoom;
+		param->zoom *= 0.95;
+	x_after = (scale(x, -2, 2, WIDTH - 1) + param->x_shift) * param->zoom;
+	y_after = (scale(x, 2, -2, WIDTH - 1) + param->y_shift) * param->zoom;
 	param->x_shift += ((x_before - x_after) / param->zoom);
 	param->y_shift += ((y_before - y_after) / param->zoom);
 	draw_fractal(param);
@@ -71,5 +70,6 @@ void	event_handler(t_env *fractal)
 {
 	mlx_key_hook(fractal->win, key_handler, fractal);
 	mlx_mouse_hook(fractal->win, mouse_handler, fractal);
-	mlx_hook(fractal->win, DestroyNotify, StructureNotifyMask, window_handler, fractal);
+	mlx_hook(fractal->win, DestroyNotify, StructureNotifyMask,
+		window_handler, fractal);
 }

@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:50:57 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 18:27:53 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:59:41 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	draw_mandelbrot(t_env *fractal, int x, int y)
 
 	z.a = 0;
 	z.b = 0;
-	c.a = scale(x, -2 + fractal->x_shift, 2 + fractal->x_shift, WIDTH - 1) * fractal->zoom;
-	c.b = scale(y, 2 + fractal->y_shift, -2 + fractal->y_shift, HEIGHT - 1) * fractal->zoom;
+	c.a = (scale(x, -2, 2, WIDTH - 1) + fractal->x_shift) * fractal->zoom;
+	c.b = (scale(y, 2, -2, HEIGHT - 1) + fractal->y_shift) * fractal->zoom;
 	i = 0;
 	while (i < fractal->nb_iterations)
 	{
@@ -62,8 +62,8 @@ static void	draw_julia(t_env *fractal, char **argv, int x, int y)
 
 	c.a = ft_atod(argv[2]);
 	c.b = ft_atod(argv[3]);
-	z.a = scale(x, -2 + fractal->x_shift, 2 + fractal->x_shift, WIDTH - 1) * fractal->zoom;
-	z.b = scale(y, 2 + fractal->y_shift, -2 + fractal->y_shift, HEIGHT - 1) * fractal->zoom;
+	z.a = (scale(x, -2, 2, WIDTH - 1) + fractal->x_shift) * fractal->zoom;
+	z.b = (scale(y, 2, -2, HEIGHT - 1) + fractal->y_shift) * fractal->zoom;
 	i = 0;
 	while (i < fractal->nb_iterations)
 	{
@@ -90,8 +90,8 @@ static void	draw_burningship(t_env *fractal, int x, int y)
 
 	z.a = 0;
 	z.b = 0;
-	c.a = scale(x, -2 + fractal->x_shift, 2 + fractal->x_shift, WIDTH - 1) * fractal->zoom;
-	c.b = scale(y, -2 - fractal->y_shift, 2 - fractal->y_shift, HEIGHT - 1) * fractal->zoom;
+	c.a = (scale(x, -2, 2, WIDTH - 1) + fractal->x_shift) * fractal->zoom;
+	c.b = (scale(y, -2, 2, HEIGHT - 1) - fractal->y_shift) * fractal->zoom;
 	i = 0;
 	while (i < fractal->nb_iterations)
 	{
