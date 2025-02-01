@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:50:57 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/30 19:48:13 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:27:53 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	ft_mlx_pixel_put(t_img *img, int x, int y, int color)
 	{
 		offset = (y * img->line_len) + (x * (img->bpp / 8));
 		pxl = img->pixel + offset;
-		if (*(unsigned int *)pxl != color)
-			*(unsigned int *)pxl = color;
+		*(unsigned int *)pxl = color;
 	}
 }
 
