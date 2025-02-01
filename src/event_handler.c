@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:43:16 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 19:06:00 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 19:10:42 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ static int	mouse_handler(int mousecode, int x, int y, t_env *param)
 	double	y_after;
 
 	x_before = (scale(x, -2, 2, WIDTH - 1) + param->x_shift) * param->zoom;
-	y_before = (scale(x, 2, -2, WIDTH - 1) + param->y_shift) * param->zoom;
+	y_before = (scale(y, 2, -2, WIDTH - 1) + param->y_shift) * param->zoom;
 	if (mousecode == 4)
 		param->zoom *= 1.05;
 	else if (mousecode == 5)
 		param->zoom *= 0.95;
 	x_after = (scale(x, -2, 2, WIDTH - 1) + param->x_shift) * param->zoom;
-	y_after = (scale(x, 2, -2, WIDTH - 1) + param->y_shift) * param->zoom;
+	y_after = (scale(y, 2, -2, WIDTH - 1) + param->y_shift) * param->zoom;
 	param->x_shift += ((x_before - x_after) / param->zoom);
 	param->y_shift += ((y_before - y_after) / param->zoom);
 	draw_fractal(param);
