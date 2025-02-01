@@ -1,8 +1,0 @@
-
-
-- add atod to libft and reclone libft : OK
-- implement the Julia set : OK
-- implement burniship : OK
-- make sure the zoom effect follows the mouse position : OK
-- good parsing with a helper as in my phone
-- compile with flags
