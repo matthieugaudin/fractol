@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:43:16 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/01/31 20:01:08 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/01 17:56:58 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	mouse_handler(int mousecode, int x, int y, t_env *param)
 	y_after = scale(y, 2 + param->y_shift, -2 + param->y_shift, HEIGHT - 1) * param->zoom;
 	param->x_shift += ((x_before - x_after) / param->zoom);
 	param->y_shift += ((y_before - y_after) / param->zoom);
+	draw_fractal(param);
 	return (0);
 }
 
