@@ -1,6 +1,6 @@
 NAME = fractol
-CC = cc -g
-CCFLAGS = #Wall -Wextra -Werror
+CC = cc
+CCFLAGS = -Wall -Wextra -Werror
 LIBFT = libft.a
 LIBFT_DIR = libft
 MLX = libmlx.a
@@ -17,12 +17,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR) bonus
 	@$(MAKE) -C $(MLX_DIR) all
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
+	$(CC) $(CCFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
 
 %.o: %.c
-	$(CC) -I/usr/include -Imlx_linux -c $< -o $@
+	$(CC) $(CCFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-# -03 -c
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
 	@$(MAKE) -C $(MLX_DIR) clean
