@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:15:22 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 19:04:17 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:25:32 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	calc_suit_iteration(t_env *fractal, t_complex *z, t_complex c);
 double	ft_atod(char *str);
 int		rgb_lerping(int color1, int color2, float t);
 t_rgb	get_rgb(int color);
+void	ft_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif /* FRACTOL_H */

@@ -6,30 +6,34 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:50:57 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 18:59:41 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:37:22 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-static void	ft_mlx_pixel_put(t_img *img, int x, int y, int color)
+static void	draw_pxl(t_env *fractal, int x, int y, int i)
 {
-	char	*pxl;
-	int		offset;
+	int	color;
 
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-	{
-		offset = (y * img->line_len) + (x * (img->bpp / 8));
-		pxl = img->pixel + offset;
-		*(unsigned int *)pxl = color;
-	}
+	color = rgb_lerping(
+			((int *)fractal->color->content)[0],
+			((int *)fractal->color->content)[1],
+			(float)i / fractal->nb_iterations);
+	if (i == fractal->nb_iterations)
+		ft_mlx_pixel_put(&fractal->img, x, y,
+			((int *)fractal->color->content)[0]);
+	else if (fractal->to_lerp)
+		ft_mlx_pixel_put(&fractal->img, x, y, color);
+	else
+		ft_mlx_pixel_put(&fractal->img, x, y,
+			((int *)fractal->color->content)[1] * i);
 }
 
 static void	draw_mandelbrot(t_env *fractal, int x, int y)
 {
 	t_complex	z;
 	t_complex	c;
-	int			color;
 	int			i;
 
 	z.a = 0;
@@ -44,13 +48,7 @@ static void	draw_mandelbrot(t_env *fractal, int x, int y)
 			break ;
 		i++;
 	}
-	color = rgb_lerping(((int *)fractal->color->content)[0], ((int *)fractal->color->content)[1], (float)i / fractal->nb_iterations);
-	if (i == fractal->nb_iterations)
-		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[0]);
-	else if (fractal->to_lerp)
-		ft_mlx_pixel_put(&fractal->img, x, y, color);
-	else
-		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[1] * i);
+	draw_pxl(fractal, x, y, i);
 }
 
 static void	draw_julia(t_env *fractal, char **argv, int x, int y)
@@ -72,13 +70,7 @@ static void	draw_julia(t_env *fractal, char **argv, int x, int y)
 			break ;
 		i++;
 	}
-	color = rgb_lerping(((int *)fractal->color->content)[0], ((int *)fractal->color->content)[1], (float)i / fractal->nb_iterations);
-	if (i == fractal->nb_iterations)
-		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[0]);
-	else if (fractal->to_lerp)
-		ft_mlx_pixel_put(&fractal->img, x, y, color);
-	else
-		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[1] * i);
+	draw_pxl(fractal, x, y, i);
 }
 
 static void	draw_burningship(t_env *fractal, int x, int y)
@@ -100,13 +92,7 @@ static void	draw_burningship(t_env *fractal, int x, int y)
 			break ;
 		i++;
 	}
-	color = rgb_lerping(((int *)fractal->color->content)[0], ((int *)fractal->color->content)[1], (float)i / fractal->nb_iterations);
-	if (i == fractal->nb_iterations)
-		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[0]);
-	else if (fractal->to_lerp)
-		ft_mlx_pixel_put(&fractal->img, x, y, color);
-	else
-		ft_mlx_pixel_put(&fractal->img, x, y, ((int *)fractal->color->content)[1] * i);
+	draw_pxl(fractal, x, y, i);
 }
 
 void	draw_fractal(t_env *fractal)

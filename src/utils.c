@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:42:18 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 18:39:33 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:37:44 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,17 @@ double	ft_atod(char *str)
 		pow /= 10;
 	}
 	return (res * sign);
+}
+
+void	ft_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*pxl;
+	int		offset;
+
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		offset = (y * img->line_len) + (x * (img->bpp / 8));
+		pxl = img->pixel + offset;
+		*(unsigned int *)pxl = color;
+	}
 }
