@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:40:48 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/01 20:02:13 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:55:56 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ static int	is_numeric(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (i != 0 && (str[i] == '+' || str[i] == '-'))
+		if (!ft_isdigit(str[i]) && str[i] != '.'
+			&& str[i] != '+' && str[i] != '-')
 			return (0);
-		else if (!ft_isdigit(str[i]) && str[i] != '.')
+		if (i > 0 && (str[i] == '+' || str[i] == '-'))
 			return (0);
-		else if (str[i] == '.' && !str[i + 1])
+		if (str[i] == '.' && !str[i + 1])
 			return (0);
-		else if (str[i] == '.' && i == 0)
+		if (str[i] == '.' && i == 0)
 			return (0);
 		i++;
 	}
