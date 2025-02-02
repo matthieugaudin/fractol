@@ -6,7 +6,7 @@
 /*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:50:57 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/02 19:37:22 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:44:56 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	draw_julia(t_env *fractal, char **argv, int x, int y)
 {
 	t_complex	z;
 	t_complex	c;
-	int			color;
 	int			i;
 
 	c.a = ft_atod(argv[2]);
@@ -77,7 +76,6 @@ static void	draw_burningship(t_env *fractal, int x, int y)
 {
 	t_complex	z;
 	t_complex	c;
-	int			color;
 	int			i;
 
 	z.a = 0;
