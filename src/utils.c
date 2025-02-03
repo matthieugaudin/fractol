@@ -36,8 +36,10 @@ void	calc_suit_iteration(t_env *fractal, t_complex *z, t_complex c)
 double	ft_atod(char *str)
 {
 	double	res;
+	double	pow;
 	int		sign;
 
+	pow = 0.1;
 	res = 0.0;
 	sign = 1;
 	if (*str == '-' || *str == '+')
@@ -50,7 +52,10 @@ double	ft_atod(char *str)
 	if (*str == '.')
 		str++;
 	while ('0' <= *str && *str <= '9')
-		res = res + (0.1 * (*str++ - '0'));
+	{
+		res = res + (pow * (*str++ - '0'));
+		pow /= 10;
+	}
 	return (res * sign);
 }
 
