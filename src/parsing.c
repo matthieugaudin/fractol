@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgaudin <mgaudin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:40:48 by mgaudin           #+#    #+#             */
-/*   Updated: 2025/02/02 19:55:56 by mgaudin          ###   ########.fr       */
+/*   Updated: 2025/02/03 12:19:01 by mgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ static int	is_numeric(char *str)
 			&& str[i] != '+' && str[i] != '-')
 			return (0);
 		if (i > 0 && (str[i] == '+' || str[i] == '-'))
+			return (0);
+		if (!ft_isdigit(str[i + 1])
+			&& (str[i] == '+' || str[i] == '-'))
 			return (0);
 		if (str[i] == '.' && !str[i + 1])
 			return (0);
