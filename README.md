@@ -9,9 +9,9 @@ It allows interactive visualization of famous fractals with zooming, panning, an
 ```md
 fract-ol
 ├── include
-│   └── *.h
-├── mlx_linux
+│   └── fractol.h
 ├── libft
+├── mlx_linux
 ├── src
 │   └── *.c
 ├── Makefile
