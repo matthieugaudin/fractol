@@ -8,11 +8,11 @@ It allows interactive visualization of famous fractals with zooming, panning, an
 
 ```md
 fract-ol
-├── includes
+├── include
 │   └── *.h
-├── libs
-│   └── libft
-├── srcs
+├── mlx_linux
+├── libft
+├── src
 │   └── *.c
 ├── Makefile
 └── README.md
