@@ -24,6 +24,8 @@ fract-ol
 - Mandelbrot set
 - Julia sets (with interactive parameters)
 - Burning Ship set
+- Adjustable iteration depth
+- Keyboard navigation with arrow keys
 - Mouse-following zoom
 - Color shifting
 - RGB color interpolation
